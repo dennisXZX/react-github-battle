@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import styles from '../styles/';
 import ReactRouter, { Link } from 'react-router';
 
 class Home extends Component {
     render() {
         return (
-            <div className="jumbotron col-sm-12 text-center" style={styles.transparentBg}>
+            <div className="jumbotron col-sm-12 text-center transparentBg">
                 <h1>Github Battle</h1>
                 <p className="lead">Some fancy motto</p>
                 <Link to="/playerone">

@@ -12,44 +12,48 @@ class PromptContainer extends Component {
         this.onSubmitUser = this.onSubmitUser.bind(this);
 
         this.state = {
-            username: ''
+            userInputName: '',
+            playerone: '',
         }
     }
 
     // trigger when user types in the input field
     onUpdateUser(e) {
         this.setState({
-            username: e.target.value
+            userInputName: e.target.value
         })
     }
 
     // trigger when user submits the form
     onSubmitUser(e) {
-        // cache the username
-        const username = this.state.username;
-        // reset the state
-        this.setState({
-            username: ''
-        });
         // route to next page depending on which page is currently on
-        if (this.props.route.header == "Player Two") {
-            // go to /battle
-            console.log("go to battle");
-            
-        } else {
+        if (this.props.route.header == "Player One") {
             // go to /playertwo
-            console.log("go to playertwo");  
-            hashHistory.push('/playertwo/');          
+            // store the current username for player one, reset the username state for player two
+            this.setState({
+                playerone: this.state.userInputName,
+                userInputName: ""
+            });
+            hashHistory.push('/playertwo');
+        } else {
+            // go to /battle
+            // send the query to ConfirmBattleContainer
+            hashHistory.push({
+                pathname: '/battle',
+                query: {
+                    playerone: this.state.playerone,
+                    playertwo: this.state.userInputName
+                }
+            });
         }
     }
-
     render() {
         return (
             <Prompt 
                 onSubmitUser={this.onSubmitUser}
                 onUpdateUser={this.onUpdateUser} 
                 header={this.props.route.header}
-                username={this.state.username} />
+                username={this.state.userInputName} />
         )
     }
 }
