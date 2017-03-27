@@ -13,11 +13,10 @@ class ResultsContainer extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.location.state.playerInfo);
         // pass the array that contains user info to githubHelpers
-        // when the scores are calculated then set the state
+        // when the scores are calculated, it is returned as an array
         githubHelpers.battle(this.props.location.state.playerInfo)
-            .then((scores) => {
+            .then((scores) => { // an array containing two players' scores
                 this.setState({
                     scores: scores,
                     isLoading: false

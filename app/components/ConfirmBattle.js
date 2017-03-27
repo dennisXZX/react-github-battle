@@ -1,11 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import UserDetails from './UserDetails';
-
-
-function puke(object) {
-    return <pre>{JSON.stringify(object, null, ' ')}</pre>
-}
+import UserDetailsWrapper from './UersDetailsWrapper';
+import MainContainer from './MainContainer';
 
 const ConfirmBattle = (props) => {
     if (props.isLoading === true) {
@@ -14,17 +11,15 @@ const ConfirmBattle = (props) => {
         )
     } else {
         return (
-            <div className="jumbotron col-sm-12 text-center transparentBg">
+            <MainContainer>
                 <h1>Confirm Players</h1>
                 <div className="col-sm-8 col-sm-offset-2">
-                    <div className="col-sm-6">
-                        <p className="lead">Player 1</p>
+                    <UserDetailsWrapper header="Player 1">
                         <UserDetails info={props.playerInfo[0]} />
-                    </div>
-                    <div className="col-sm-6">
-                        <p className="lead">Player 2</p>
+                    </UserDetailsWrapper>
+                    <UserDetailsWrapper header="Player 2">
                         <UserDetails info={props.playerInfo[1]} />
-                    </div>
+                    </UserDetailsWrapper>
                 </div>
                 <div className="col-sm-8 col-sm-offset-2">
                     <div className="col-sm-12 topSpace">
@@ -40,7 +35,7 @@ const ConfirmBattle = (props) => {
                         </Link>
                     </div>
                 </div>                    
-            </div>
+            </MainContainer>
         )
     }
 
