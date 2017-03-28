@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import UserDetails from './UserDetails';
 import UserDetailsWrapper from './UersDetailsWrapper';
 import MainContainer from './MainContainer';
+import Loading from './Loading';
 
 const StartOver = () => {
     return (
@@ -18,7 +19,7 @@ const Results = (props) => {
     // check if the data is still loading
     if (props.isLoading === true) {
         return (
-            <p>LOADING...</p>
+            <Loading />
         )
     }
 
@@ -43,7 +44,7 @@ const Results = (props) => {
                 <UserDetailsWrapper header="Winner">
                     <UserDetails score={props.scores[winningIndex]} info={props.playerInfo[winningIndex]} />
                 </UserDetailsWrapper>
-                <UserDetailsWrapper header="Winner">
+                <UserDetailsWrapper header="Loser">
                     <UserDetails score={props.scores[losingIndex]} info={props.playerInfo[losingIndex]} />
                 </UserDetailsWrapper>
                 <StartOver />

@@ -3,11 +3,12 @@ import { Link } from 'react-router';
 import UserDetails from './UserDetails';
 import UserDetailsWrapper from './UersDetailsWrapper';
 import MainContainer from './MainContainer';
+import Loading from './Loading';
 
 const ConfirmBattle = (props) => {
     if (props.isLoading === true) {
         return (
-            <div>Loading!</div>
+            <Loading />
         )
     } else {
         return (
